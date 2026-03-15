@@ -19,19 +19,18 @@ const HeroSection = () => {
               Backed by leading investors
             </p>
             <h1 className="font-display text-4xl font-extrabold leading-tight tracking-tight text-primary-foreground md:text-5xl lg:text-6xl text-balance">
-              The AI Compliance
-              <br />& Cash Flow Firewall
+              Employee Leave
+              <br />Management Platform
             </h1>
             <p className="mt-6 max-w-lg text-lg font-medium leading-relaxed text-primary-foreground/90 md:text-xl">
-              Automate regulatory compliance, optimize cash flow, and reduce
-              risk for MSMEs — powered by intelligent AI.
+              Streamline leave requests, automate approvals, and manage employee absences efficiently — powered by intelligent automation.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
               {[
-                { icon: Shield, label: "AICPA" },
-                { icon: Lock, label: "ISO 27001" },
-                { icon: FileCheck, label: "GDPR" },
+                { icon: Shield, label: "Leave Tracking" },
+                { icon: Lock, label: "Approval Workflow" },
+                { icon: FileCheck, label: "Calendar Sync" },
               ].map(({ icon: Icon, label }, i) => (
                 <motion.div
                   key={label}

@@ -26,12 +26,11 @@ const BookDemo = () => {
         <div className="relative container mx-auto max-w-2xl px-6 text-center text-white">
           <ScrollReveal>
             <h2 className="font-display text-3xl font-bold md:text-4xl">
-              30 Minutes. Your Content. Live Results.
+              Streamline Your Leave Management Today
             </h2>
 
             <p className="mt-4 text-base text-white/80">
-              See how ComplianceAI transforms your compliance and cash flow
-              operations — with your own data.
+              Join our Employee Leave Management Platform — streamline your leave requests and approvals.
             </p>
 
             <div className="mx-auto mt-8 flex max-w-md gap-3">
@@ -41,7 +40,7 @@ const BookDemo = () => {
                 className="flex-1 rounded-md"
               />
               <Button className="rounded-md bg-charcoal px-6 text-primary-foreground hover:bg-charcoal-light">
-                Book Demo
+                Register
               </Button>
             </div>
 
@@ -53,15 +52,14 @@ const BookDemo = () => {
           <ScrollReveal delay={0.2}>
             <blockquote className="mt-12 border-t border-white/20 pt-8">
               <p className="text-lg italic text-white/90">
-                "ComplianceAI reduced our compliance review time by 80% and gave
-                us real-time visibility into our cash flow for the first time."
+                "Our Employee Leave Management Platform simplified our leave tracking process and improved team productivity significantly."
               </p>
               <footer className="mt-4">
                 <p className="text-xs font-medium uppercase tracking-wider text-white/70">
-                  Head of Compliance
+                  HR Manager
                 </p>
                 <p className="text-xs text-white/60">
-                  Large MSME Financial Services
+                  Tech Company
                 </p>
               </footer>
             </blockquote>

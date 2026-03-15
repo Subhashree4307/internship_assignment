@@ -4,7 +4,7 @@ import Container from "./container";
 
 const columns = [
   { title: "Platform", links: ["Compose", "Guard", "Command", "Integrations", "API"] },
-  { title: "Solutions", links: ["Compliance", "Cash Flow", "Risk Management", "Audit", "Reporting"] },
+  { title: "Solutions", links: ["Leave Requests", "Approval Management", "Balance Tracking", "Reports", "Calendar"] },
   { title: "Company", links: ["About", "Careers", "Blog", "Press", "Contact"] },
   { title: "Legal", links: ["Privacy Policy", "Terms of Service", "Cookie Policy", "Security"] },
 ];
@@ -21,10 +21,10 @@ const Footer = () => {
                 <div className="flex h-8 w-8 items-center justify-center rounded-md gradient-hero">
                   <span className="text-sm font-bold text-primary-foreground">CA</span>
                 </div>
-                <span className="font-display text-lg font-bold text-foreground">ComplianceAI</span>
+                <span className="font-display text-lg font-bold text-foreground">LeaveManager</span>
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
-                AI-powered compliance and cash flow intelligence for MSMEs.
+                AI-powered leave management and employee absence tracking for modern businesses.
               </p>
               <div className="mt-6 flex gap-3">
                 {[Shield, Lock, FileCheck].map((Icon, i) => (
@@ -52,11 +52,11 @@ const Footer = () => {
           </div>
 
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 sm:flex-row">
-            <p className="text-xs text-muted-foreground">© 2026 ComplianceAI. All rights reserved.</p>
+            <p className="text-xs text-muted-foreground">© 2026 LeaveManager. All rights reserved.</p>
             <div className="flex gap-6">
-              <a href="#" className="text-xs text-muted-foreground hover:text-accent">Trust Center</a>
-              <a href="mailto:hello@complianceai.com" className="text-xs text-muted-foreground hover:text-accent">
-                hello@complianceai.com
+              <a href="#" className="text-xs text-muted-foreground hover:text-accent">Privacy Policy</a>
+              <a href="mailto:hello@leavemanager.com" className="text-xs text-muted-foreground hover:text-accent">
+                hello@leavemanager.com
               </a>
             </div>
           </div>

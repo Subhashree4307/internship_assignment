@@ -35,7 +35,7 @@ const Navbar = () => {
               <span className="text-sm font-bold text-primary-foreground">CA</span>
             </div>
             <span className="font-display text-lg font-bold text-foreground">
-              ComplianceAI
+              LeaveManager
             </span>
           </a>
 
@@ -89,7 +89,7 @@ const Navbar = () => {
               href="/register"
               className="hidden rounded-md bg-black px-6 py-2 text-sm font-semibold text-white hover:bg-white hover:text-black transition-colors md:inline-flex hover:border-2 border-black"
             >
-              GET DEMO
+              Register
             </Link>
           )}
 
@@ -141,7 +141,7 @@ const Navbar = () => {
               </div>
             ) : (
               <Button className="mt-4 w-full rounded-md bg-black text-white hover:bg-gray-800">
-                GET DEMO
+                Register
               </Button>
             )}
           </div>

@@ -7,33 +7,33 @@ import Container from "./container";
 
 const features = [
   {
-    subtitle: "DEFINE THE RULES",
-    title: "Intelligent Compliance Automation",
+    subtitle: "REQUEST LEAVES",
+    title: "Streamlined Leave Requests",
     bullets: [
-      "Auto-detect regulatory requirements for your industry",
-      "AI-powered policy creation and management",
-      "Real-time compliance monitoring and alerts",
+      "Easy online leave application forms",
+      "Multiple leave types support (vacation, sick, personal)",
+      "Mobile-friendly request submission",
     ],
     gradient: "gradient-mauve",
   },
   {
-    subtitle: "OPTIMIZE CASH FLOW",
-    title: "Smart Cash Flow Intelligence",
+    subtitle: "MANAGE APPROVALS",
+    title: "Automated Approval Workflows",
     bullets: [
-      "Predictive cash flow forecasting with AI",
-      "Automated invoice reconciliation",
-      "Intelligent payment scheduling and reminders",
+      "Configurable approval hierarchies",
+      "Automated notifications to managers",
+      "Real-time approval status tracking",
     ],
     gradient: "gradient-blue-pink",
     reverse: true,
   },
   {
-    subtitle: "REDUCE RISK",
-    title: "Proactive Risk Management",
+    subtitle: "TRACK BALANCES",
+    title: "Leave Balance Management",
     bullets: [
-      "Anomaly detection across all transactions",
-      "Automated audit trail generation",
-      "Regulatory change tracking and adaptation",
+      "Real-time leave balance updates",
+      "Accrual calculations and carry-over rules",
+      "Comprehensive leave history reports",
     ],
     gradient: "gradient-orange-red",
   },
