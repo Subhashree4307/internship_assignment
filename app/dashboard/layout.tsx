@@ -2,7 +2,7 @@
 
 export const dynamic = "force-dynamic";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
@@ -62,15 +62,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }, [activeTab]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 lg:flex-row lg:items-start">
-        <aside className="w-full max-w-sm shrink-0 rounded-xl border bg-white p-6 shadow-sm lg:h-[calc(100vh-80px)] lg:sticky lg:top-10">
-          <h2 className="text-lg font-semibold">Navigation</h2>
-          <div className="mt-4 space-y-2">{items}</div>
-        </aside>
+    <Suspense fallback={<div className="p-6">Loading dashboard…</div>}>
+      <div className="min-h-screen bg-gray-50">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 lg:flex-row lg:items-start">
+          <aside className="w-full max-w-sm shrink-0 rounded-xl border bg-white p-6 shadow-sm lg:h-[calc(100vh-80px)] lg:sticky lg:top-10">
+            <h2 className="text-lg font-semibold">Navigation</h2>
+            <div className="mt-4 space-y-2">{items}</div>
+          </aside>
 
-        <main className="w-full rounded-xl bg-white p-6 shadow-sm">{children}</main>
+          <main className="w-full rounded-xl bg-white p-6 shadow-sm">{children}</main>
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 }
