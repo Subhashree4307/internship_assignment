@@ -1,12 +1,28 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "./container";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import Link from "next/link";
+
 const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    setIsLoggedIn(!!user);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("loginEmail");
+    setIsLoggedIn(false);
+    window.location.href = "/";
+  };
+
   const navItems = ["Home", "Features", "Pricing", "Contact"];
   return (
     <nav>
@@ -38,15 +54,45 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* CTA */}
-          <Link
-            href="/register"
-            className="hidden rounded-md bg-black px-6 py-2 text-sm font-semibold text-white hover:bg-white hover:text-black transition-colors md:inline-flex hover:border-2 border-black
-        
-        "
-          >
-            GET DEMO
-          </Link>
+          {/* CTA or Profile */}
+          {isLoggedIn ? (
+            <div className="relative">
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex items-center gap-2 rounded-md bg-black px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800"
+              >
+                <User size={16} />
+                Profile
+              </button>
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                  <Link
+                    href="/dashboard"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    View Dashboard
+                  </Link>
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setDropdownOpen(false);
+                    }}
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link
+              href="/register"
+              className="hidden rounded-md bg-black px-6 py-2 text-sm font-semibold text-white hover:bg-white hover:text-black transition-colors md:inline-flex hover:border-2 border-black"
+            >
+              GET DEMO
+            </Link>
+          )}
 
           {/* Mobile Toggle */}
           <button
@@ -70,17 +116,38 @@ const Navbar = () => {
                     onClick={() => setMobileOpen(false)}
                   >
                     {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <Button className="mt-4 w-full rounded-md bg-black text-white hover:bg-gray-800">
-              GET DEMO
-            </Button>
-          </div>
-        )}
-      </Container>
-    </nav>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              {isLoggedIn ? (
+                <div className="mt-4 space-y-2">
+                  <Link
+                    href="/dashboard"
+                    className="block w-full rounded-md bg-black px-4 py-2 text-sm font-semibold text-white text-center"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    View Dashboard
+                  </Link>
+                  <Button
+                    onClick={() => {
+                      handleLogout();
+                      setMobileOpen(false);
+                    }}
+                    className="w-full rounded-md bg-gray-800 text-white hover:bg-gray-700"
+                  >
+                    Logout
+                  </Button>
+                </div>
+              ) : (
+                <Button className="mt-4 w-full rounded-md bg-black text-white hover:bg-gray-800">
+                  GET DEMO
+                </Button>
+              )}
+            </div>
+          )}
+        </Container>
+      </nav>
   );
 };
 

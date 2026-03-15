@@ -84,20 +84,33 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) => {
 
   const onSubmit: SubmitHandler<RegisterFormValues> = async (values) => {
     try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          password: values.password,
+          employee_id: values.employee_id,
+          department: values.department,
+        }),
       });
-      const data = await response.json();
+
       if (response.ok) {
+        // Clear localStorage
         localStorage.removeItem('registerFormData');
-        window.location.href = `/register/success?tenant_id=${data.tenant_id}&company_id=${data.company_id}`;
+        localStorage.setItem('pendingEmail', values.email);
+        // Redirect to success page
+        window.location.href = "/register/success";
       } else {
-        alert(data.error || 'Registration failed');
+        const error = await response.json();
+        alert(error.error || "Registration failed");
       }
     } catch (error) {
-      alert('Submission failed. Please try again.');
+      alert("An error occurred. Please try again.");
     }
   };
 
@@ -160,7 +173,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchToLogin }) => {
         </div>
 
         <Button type="submit" className="w-full">
-          Login
+          Register
         </Button>
 
         <p className="text-center text-sm text-muted-foreground">

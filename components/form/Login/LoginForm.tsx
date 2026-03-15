@@ -36,15 +36,26 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchToRegister }) => {
   });
 
   const onSubmit: SubmitHandler<LoginFormValues> = async (values) => {
-    localStorage.setItem('loginEmail', values.email);
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: values.email,
-      password: values.password,
-    });
-    if (error) {
-      alert(error.message);
-    } else {
-      window.location.href = '/dashboard';
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        const { user } = await response.json();
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("loginEmail", values.email);
+        window.location.href = "/dashboard";
+      } else {
+        const error = await response.json();
+        alert(error.error || "Login failed");
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again.");
     }
   };
 
