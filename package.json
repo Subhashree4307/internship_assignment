@@ -20,6 +20,7 @@
     "ogl": "^1.0.11",
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
+    "react-calendar": "^6.0.0",
     "react-datepicker": "^9.1.0",
     "react-dom": "19.2.3",
     "react-hook-form": "^7.71.2",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/bcrypt": "^6.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

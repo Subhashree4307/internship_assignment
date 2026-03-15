@@ -138,7 +138,9 @@ const RenderField = ({
           </SelectTrigger>
 
           <SelectContent>
-            {selectOptions?.map((option) => (
+            {selectOptions
+              ?.filter((option) => option.value !== "")
+              ?.map((option) => (
               <SelectItem key={option.value} value={option.value}>
                 <div className="flex items-center gap-2">
                   {option.imgUrl && (

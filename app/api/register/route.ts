@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     // For simplicity, I'll create the user directly, but in real, send email
 
     // Insert user
-    const { data, error } = await supabase
+    const { data: user, error } = await supabase
       .from("users")
       .insert({
         email,
@@ -45,8 +45,36 @@ export async function POST(request: NextRequest) {
       .select()
       .single();
 
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
+    if (error || !user) {
+      return NextResponse.json({ error: error?.message || "Failed to create user" }, { status: 500 });
+    }
+
+    // Create initial leave balances for this user for each leave type
+    const fiscalYear = new Date().getFullYear();
+
+    const { data: leaveTypes, error: ltError } = await supabase
+      .from("leave_types")
+      .select("id, annual_entitlement");
+
+    if (!ltError && Array.isArray(leaveTypes) && leaveTypes.length > 0) {
+      const balances = leaveTypes.map((lt) => ({
+        user_id: user.id,
+        leave_type_id: lt.id,
+        fiscal_year: fiscalYear,
+        entitled_days: lt.annual_entitlement ?? 0,
+        used_days: 0,
+        pending_days: 0,
+        carried_forward_days: 0,
+      }));
+
+      const { error: lbError } = await supabase
+        .from("leave_balances")
+        .insert(balances);
+
+      if (lbError) {
+        // Log but don't block registration
+        console.error("Failed to create leave balances for user", lbError.message);
+      }
     }
 
     // In real app, send email with link to /confirm/${token}

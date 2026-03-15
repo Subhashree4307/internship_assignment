@@ -24,6 +24,7 @@ const Navbar = () => {
   };
 
   const navItems = ["Home", "Features", "Pricing", "Contact"];
+
   return (
     <nav>
       <Container>
@@ -31,9 +32,7 @@ const Navbar = () => {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-md gradient-hero">
-              <span className="text-sm font-bold text-primary-foreground">
-                CA
-              </span>
+              <span className="text-sm font-bold text-primary-foreground">CA</span>
             </div>
             <span className="font-display text-lg font-bold text-foreground">
               ComplianceAI
@@ -116,38 +115,39 @@ const Navbar = () => {
                     onClick={() => setMobileOpen(false)}
                   >
                     {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              {isLoggedIn ? (
-                <div className="mt-4 space-y-2">
-                  <Link
-                    href="/dashboard"
-                    className="block w-full rounded-md bg-black px-4 py-2 text-sm font-semibold text-white text-center"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    View Dashboard
-                  </Link>
-                  <Button
-                    onClick={() => {
-                      handleLogout();
-                      setMobileOpen(false);
-                    }}
-                    className="w-full rounded-md bg-gray-800 text-white hover:bg-gray-700"
-                  >
-                    Logout
-                  </Button>
-                </div>
-              ) : (
-                <Button className="mt-4 w-full rounded-md bg-black text-white hover:bg-gray-800">
-                  GET DEMO
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {isLoggedIn ? (
+              <div className="mt-4 space-y-2">
+                <Link
+                  href="/dashboard"
+                  className="block w-full rounded-md bg-black px-4 py-2 text-sm font-semibold text-white text-center"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  View Dashboard
+                </Link>
+                <Button
+                  onClick={() => {
+                    handleLogout();
+                    setMobileOpen(false);
+                  }}
+                  className="w-full rounded-md bg-gray-800 text-white hover:bg-gray-700"
+                >
+                  Logout
                 </Button>
-              )}
-            </div>
-          )}
-        </Container>
-      </nav>
+              </div>
+            ) : (
+              <Button className="mt-4 w-full rounded-md bg-black text-white hover:bg-gray-800">
+                GET DEMO
+              </Button>
+            )}
+          </div>
+        )}
+      </Container>
+    </nav>
   );
 };
 
